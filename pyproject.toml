@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "conyappa"
+version = "1.0.0"
+description = "Latam’s first prize-linked savings account."
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.9"
+
+[tool.poetry.dev-dependencies]
+black = "^20.8b1"
+flake8 = "^3.9.0"
+isort = "^5.7.0"
+
+[tool.black]
+line-length = 120
+target-version = ["py36", "py37", "py38"]
+exclude = '/(\.venv)/'
+
+[build-system]
+requires = ["poetry>=1.0.3"]
+build-backend = "poetry.masonry.api"
