@@ -2,6 +2,9 @@
 name = "conyappa"
 version = "1.0.0"
 description = "Latam’s first prize-linked savings account."
+authors = [
+  "Ariel Martínez Silberstein <amartinez5@uc.cl>",
+]
 
 [tool.poetry.dependencies]
 python = ">=3.8,<3.9"
