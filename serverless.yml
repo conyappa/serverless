@@ -16,4 +16,4 @@ custom:
 functions:
   randomSeed:
     handler: src/random_seed.main
-    description: Generates a random string to be used as seed.
+    description: Returns a string of discernible origins to be used as seed for random generators.
