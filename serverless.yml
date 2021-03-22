@@ -12,3 +12,8 @@ plugins:
 custom:
   pythonRequirements:
     pythonBin: python3
+
+functions:
+  randomSeed:
+    handler: src/random_seed.main
+    description: Generates a random string to be used as seed.
