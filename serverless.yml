@@ -12,3 +12,8 @@ plugins:
 custom:
   pythonRequirements:
     pythonBin: python3
+
+functions:
+  randomSeed:
+    handler: src/random_seed.main
+    description: Returns a string of discernible origins to be used as seed for random generators.
