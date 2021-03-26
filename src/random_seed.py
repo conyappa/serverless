@@ -1,15 +1,20 @@
 import json
+import os
 
 import requests
 
 
-def main(event, context):
-    url = "https://blockchain.info/latestblock"
+def latest_bitcoin_block_hash():
+    url = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
+    response = requests.get(url=url)
 
+    data = response.json()
+    return data["hash"]
+
+
+def main(event, context):
     try:
-        response = requests.get(url=url)
-        data = response.json()
-        value = data["hash"]
+        value = latest_bitcoin_block_hash()
 
     except Exception:
         response = {
