@@ -1,33 +1,27 @@
 import json
-import os
 
 import requests
+from requests import RequestException
+
+from .utils import fail_as
 
 
 def latest_bitcoin_block_hash():
-    url = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
+    url = "https://blockchain.info/latestblock"
     response = requests.get(url=url)
+
+    if response.ok:
+        raise RequestException(f"Request to '{url}' failed with status code {response.status_code}.")  # noqa: E501
 
     data = response.json()
     return data["hash"]
 
 
+@fail_as(status=503, on=(RequestException,))
 def main(event, context):
-    try:
-        value = latest_bitcoin_block_hash()
+    body = {"value": latest_bitcoin_block_hash()}
 
-    except Exception:
-        response = {
-            "statusCode": 503,
-        }
-
-    else:
-        body = {
-            "value": value,
-        }
-        response = {
-            "statusCode": 200,
-            "body": json.dumps(body),
-        }
-
-    return response
+    return {
+        "statusCode": 200,
+        "body": json.dumps(body),
+    }
