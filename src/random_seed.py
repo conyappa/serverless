@@ -1,4 +1,5 @@
 import json
+import os
 
 import requests
 from requests import RequestException
@@ -7,7 +8,7 @@ from .utils import fail_as
 
 
 def latest_bitcoin_block_hash():
-    url = "https://blockchain.info/latestblock"
+    url = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
     response = requests.get(url=url)
 
     if response.ok:
