@@ -11,7 +11,7 @@ def latest_bitcoin_block_hash():
     url = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
     response = requests.get(url=url)
 
-    if response.ok:
+    if not response.ok:
         raise RequestException(f"Request to '{url}' failed with status code {response.status_code}.")  # noqa: E501
 
     data = response.json()
@@ -20,7 +20,9 @@ def latest_bitcoin_block_hash():
 
 @fail_as(status=503, on=(RequestException,))
 def main(event, context):
-    body = {"value": latest_bitcoin_block_hash()}
+    body = {
+        "value": latest_bitcoin_block_hash(),
+    }
 
     return {
         "statusCode": 200,
