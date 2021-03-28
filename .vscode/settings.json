@@ -3,6 +3,7 @@
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
   "python.pythonPath": ".venv/bin/python",
+  "python.autoComplete.extraPaths": ["./src", "./src/env"],
   "editor.tabSize": 2,
   "files.trimTrailingWhitespace": true,
   "[python]": {
