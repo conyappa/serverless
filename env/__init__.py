@@ -16,7 +16,7 @@ LATEST_BITCOIN_BLOCK_URL = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
 ###################
 
 LOCAL_STEM = "local"
-LOCAL_PATH = Path(f"src/env/{LOCAL_STEM}.py")
+LOCAL_PATH = Path(f"env/{LOCAL_STEM}.py")
 
 if LOCAL_PATH.exists():
     from .local import *  # noqa: F401,F403
