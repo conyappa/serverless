@@ -5,14 +5,13 @@ from requests import RequestException
 
 import env
 from utils.decorators import fail_as
+from utils.api import get_response_data
 
 
 def latest_bitcoin_block_hash():
     url = env.LATEST_BITCOIN_BLOCK_URL
-    response = requests.get(url=url)
-
-    if not response.ok:
-        raise RequestException(f"Request to '{url}' failed with status code {response.status_code}.")  # noqa: E501
+    response = requests.get(url)
+    data = get_response_data(response)
 
     data = response.json()
     return data["hash"]
