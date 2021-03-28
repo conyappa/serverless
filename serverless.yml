@@ -15,9 +15,9 @@ custom:
 
 functions:
   createDraw:
-    handler: src/create_draw.main
+    handler: src.create_draw
     description: Sends a POST request to /draw.
 
   randomSeed:
-    handler: src/random_seed.main
+    handler: src.random_seed
     description: Returns a string of discernible origins to be used as seed for random generators.

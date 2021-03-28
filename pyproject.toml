@@ -9,6 +9,7 @@ authors = [
 [tool.poetry.dependencies]
 python = ">=3.8,<3.9"
 requests = "^2.25.1"
+sentry-sdk = "^1.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"

@@ -1,11 +1,8 @@
-from requests import RequestException
 import json
 
-from utils.api import get_response_data, client
-from utils.decorators import fails
+from api import client, get_response_data
 
 
-@fails(on=(RequestException,))
 def main(event, context):
     response = client["create_draw"]()
     data = get_response_data(response)

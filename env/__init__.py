@@ -8,6 +8,8 @@ from pathlib import Path
 INTERNAL_KEY = os.environ.get("INTERNAL_KEY")
 API_BASE_URL = os.environ.get("API_BASE_URL")
 
+SENTRY_DSN = os.environ.get("SENTRY_DSN")
+
 LATEST_BITCOIN_BLOCK_URL = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
 
 
