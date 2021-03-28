@@ -9,3 +9,6 @@ node_modules
 
 # Virtual environment.
 .venv
+
+# Secrets.
+local.py

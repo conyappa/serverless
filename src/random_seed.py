@@ -1,14 +1,14 @@
 import json
-import os
 
 import requests
 from requests import RequestException
 
-from .utils import fail_as
+from . import env
+from .utils.decorators import fail_as
 
 
 def latest_bitcoin_block_hash():
-    url = os.environ.get("LATEST_BITCOIN_BLOCK_URL")
+    url = env.LATEST_BITCOIN_BLOCK_URL
     response = requests.get(url=url)
 
     if not response.ok:
