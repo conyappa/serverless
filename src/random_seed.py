@@ -3,8 +3,8 @@ import json
 import requests
 from requests import RequestException
 
-from . import env
-from .utils.decorators import fail_as
+import env
+from utils.decorators import fail_as
 
 
 def latest_bitcoin_block_hash():
