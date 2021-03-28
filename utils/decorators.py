@@ -1,7 +1,7 @@
 import json
 
 
-def fail_as(status: int, on: tuple = (Exception,)):
+def fails(status: int = 500, on: tuple = (Exception,)):
     def inner(handler):
         def wrapper(*args, **kwargs):
             try:

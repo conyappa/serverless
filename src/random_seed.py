@@ -4,20 +4,19 @@ import requests
 from requests import RequestException
 
 import env
-from utils.decorators import fail_as
 from utils.api import get_response_data
+from utils.decorators import fails
 
 
 def latest_bitcoin_block_hash():
     url = env.LATEST_BITCOIN_BLOCK_URL
     response = requests.get(url)
-    data = get_response_data(response)
 
-    data = response.json()
+    data = get_response_data(response)
     return data["hash"]
 
 
-@fail_as(status=503, on=(RequestException,))
+@fails(on=(RequestException,))
 def main(event, context):
     body = {
         "value": latest_bitcoin_block_hash(),

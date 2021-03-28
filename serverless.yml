@@ -14,6 +14,10 @@ custom:
     pythonBin: python3
 
 functions:
+  createDraw:
+    handler: src/create_draw.main
+    description: Sends a POST request to /draw.
+
   randomSeed:
     handler: src/random_seed.main
     description: Returns a string of discernible origins to be used as seed for random generators.
