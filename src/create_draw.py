@@ -1,10 +1,11 @@
 import json
 
-from api import client, get_response_data
+from api import client
+from api.utils import get_response_data
 
 
 def main(event, context):
-    response = client["create_draw"]()
+    response = client.create_draw()
     data = get_response_data(response)
 
     return {

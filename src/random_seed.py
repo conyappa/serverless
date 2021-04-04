@@ -3,7 +3,7 @@ import json
 import requests
 
 import env
-from api import get_response_data
+from api.utils import get_response_data
 
 
 def latest_bitcoin_block_hash():
