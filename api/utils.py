@@ -3,7 +3,6 @@ from requests import RequestException, Response
 
 import env
 
-
 DEFAULT_HEADERS = {
     "Internal-Key": env.INTERNAL_KEY,
 }
@@ -13,10 +12,7 @@ def get_response_data(response: Response):
     if response.ok:
         return response.json()
 
-    raise RequestException(
-        f"Request to '{response.url}' failed"
-        f" with status code {response.status_code}."
-    )
+    raise RequestException(f"Request to '{response.url}' failed" f" with status code {response.status_code}.")
 
 
 def api_request(method: str, path: str = "", headers: dict = {}):
@@ -24,9 +20,3 @@ def api_request(method: str, path: str = "", headers: dict = {}):
     headers = {**DEFAULT_HEADERS, **headers}
 
     return requests.request(method=method, url=url, headers=headers)
-
-
-client = {
-    "choose_result": lambda: api_request(method="PATCH", path="/draws/ongoing"),
-    "create_draw": lambda: api_request(method="POST", path="/draws"),
-}
