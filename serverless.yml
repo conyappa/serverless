@@ -14,9 +14,13 @@ custom:
     pythonBin: python3
 
 functions:
+  chooseResult:
+    handler: src.choose_result
+    description: Sends a POST request to /draws.
+
   createDraw:
     handler: src.create_draw
-    description: Sends a POST request to /draw.
+    description: Sends a POST request to /draws.
 
   randomSeed:
     handler: src.random_seed
