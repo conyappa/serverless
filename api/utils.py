@@ -1,3 +1,5 @@
+import json
+
 import requests
 from requests import RequestException, Response
 
@@ -20,3 +22,13 @@ def api_request(method: str, path: str = "", headers: dict = {}):
     headers = {**DEFAULT_HEADERS, **headers}
 
     return requests.request(method=method, url=url, headers=headers)
+
+
+def proxy_view(func, *args, **kwargs):
+    response = func(*args, **kwargs)
+    data = get_response_data(response)
+
+    return {
+        "statusCode": response.status_code,
+        "body": json.dumps(data),
+    }

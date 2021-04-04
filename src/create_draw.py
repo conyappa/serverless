@@ -1,14 +1,6 @@
-import json
-
 from api import client
-from api.utils import get_response_data
+from api.utils import proxy_view
 
 
 def main(event, context):
-    response = client.create_draw()
-    data = get_response_data(response)
-
-    return {
-        "statusCode": response.status_code,
-        "body": json.dumps(data),
-    }
+    return proxy_view(func=client.create_draw)
