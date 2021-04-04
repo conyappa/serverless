@@ -30,10 +30,10 @@ jobs:
         run: make createvenv
 
       - name: Lint with Black
-        run: poetry run black src --check
+        run: poetry run black . --check
 
       - name: Lint with Flake8
-        run: poetry run flake8 src
+        run: poetry run flake8 .
 
       - name: Lint with iSort
-        run: poetry run isort src --check
+        run: poetry run isort . --check

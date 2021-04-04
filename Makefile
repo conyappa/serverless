@@ -4,5 +4,5 @@ createvenv:
 	poetry run poetry install
 
 format:
-	poetry run black src
-	poetry run isort src
+	poetry run black
+	poetry run isort
