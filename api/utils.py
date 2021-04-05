@@ -12,11 +12,10 @@ DEFAULT_HEADERS = {
 
 def get_response_data(response: Response):
     """
-    Returns the body of the response parsed as JSON
-    if it’s status code is 2xx. Else, raises an exception.
+    Returns the body of the response if it’s status code is 2xx.Else, raises an exception.
     """
     if response.ok:
-        return response.json()
+        return response.json() if response.text else ""
 
     raise RequestException(f"Request to '{response.url}' failed" f" with status code {response.status_code}.")
 
@@ -37,6 +36,7 @@ def as_handler(func):
     Converts a function that calls an API
     into a simple serverless handler.
     """
+
     def wrapper(*args, **kwargs):
         response = func(*args, **kwargs)
         data = get_response_data(response)
