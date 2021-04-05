@@ -7,6 +7,9 @@ from api.utils import get_response_data
 
 
 def latest_bitcoin_block_hash():
+    """
+    Returns the hash of the latest Bitcoin blockchain block.
+    """
     url = env.LATEST_BITCOIN_BLOCK_URL
     response = requests.get(url)
 
