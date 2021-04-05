@@ -1,6 +1,6 @@
 from api import client
-from api.utils import proxy_view
+from api.utils import as_handler
 
 
 def main(event, context):
-    return proxy_view(func=client.create_draw)
+    return as_handler(func=client.create_draw)()

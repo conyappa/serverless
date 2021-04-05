@@ -11,6 +11,10 @@ DEFAULT_HEADERS = {
 
 
 def get_response_data(response: Response):
+    """
+    Returns the body of the response parsed as JSON
+    if it’s status code is 2xx. Else, raises an exception.
+    """
     if response.ok:
         return response.json()
 
@@ -18,17 +22,28 @@ def get_response_data(response: Response):
 
 
 def api_request(method: str, path: str = "", headers: dict = {}):
+    """
+    Encapsulates the logic of
+    a simple request to Con Yappa’s API.
+    """
     url = f"{env.API_BASE_URL}{path}"
     headers = {**DEFAULT_HEADERS, **headers}
 
     return requests.request(method=method, url=url, headers=headers)
 
 
-def proxy_view(func, *args, **kwargs):
-    response = func(*args, **kwargs)
-    data = get_response_data(response)
+def as_handler(func):
+    """
+    Converts a function that calls an API
+    into a simple serverless handler.
+    """
+    def wrapper(*args, **kwargs):
+        response = func(*args, **kwargs)
+        data = get_response_data(response)
 
-    return {
-        "statusCode": response.status_code,
-        "body": json.dumps(data),
-    }
+        return {
+            "statusCode": response.status_code,
+            "body": json.dumps(data),
+        }
+
+    return wrapper
