@@ -13,23 +13,23 @@ createvenv:
 # Linters
 .PHONY: black
 black:
-	poetry run black src --check
+	poetry run black . --check
 
 .PHONY: black!
 black!:
-	poetry run black src
+	poetry run black .
 
 .PHONY: flake8
 flake8:
-	poetry run flake8 src
+	poetry run flake8 .
 
 .PHONY: isort
 isort:
-	poetry run isort src --check
+	poetry run isort . --check
 
 .PHONY: isort!
 isort!:
-	poetry run isort src
+	poetry run isort .
 
 .PHONY: format!
 format!: black! isort!

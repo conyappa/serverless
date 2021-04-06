@@ -3,4 +3,4 @@ from api.utils import as_handler
 
 
 def main(event, context):
-    return as_handler(func=client.create_draw)()
+    return as_handler(func=client.choose_result)()

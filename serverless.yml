@@ -14,9 +14,17 @@ custom:
     pythonBin: python3
 
 functions:
+  chooseResult:
+    handler: src.choose_result
+    description: Sends a POST request to /draws/ongoing/choose.
+
   createDraw:
     handler: src.create_draw
-    description: Sends a POST request to /draw.
+    description: Sends a POST request to /draws.
+
+  fetchMovements:
+    handler: src.fetch_movements
+    description: Sends a POST request to /movements/fetch.
 
   randomSeed:
     handler: src.random_seed
