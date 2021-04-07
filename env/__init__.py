@@ -5,6 +5,8 @@ from pathlib import Path
 # ENV VARS #
 ############
 
+STAGE = os.environ.get("STAGE")
+
 INTERNAL_KEY = os.environ.get("INTERNAL_KEY")
 API_BASE_URL = os.environ.get("API_BASE_URL")
 
